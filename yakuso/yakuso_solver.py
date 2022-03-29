@@ -46,8 +46,6 @@ class YakusoSolver:
         for j in range(cols):
             if len(sums[j]) > 0:
                 model.Add(int(sums[j]) == sum_cols[j])
-            else:
-                model.Add(sum_cols[j] == 0)
 
     def __initialize_board_values(self, model, template, rows, cols, board_bools, board_maxima):
         for i in range(rows):
@@ -74,14 +72,13 @@ class YakusoSolver:
 
     def __add_sum_per_column_constraint(self, model, sums, sum_cols, rows, board_bools, board_maxima):
         for j in range(len(sums)):
-            if len(sums[j]) > 0:
-                cur_sum = sum_cols[j]
-                total = 0
-                for i in range(rows):
-                    mult = model.NewIntVar(0, rows, f"temp-mult-{i}")
-                    model.AddMultiplicationEquality(mult, [board_maxima[i], board_bools[i][j]])
-                    total += mult
-                model.Add(total == cur_sum)
+            cur_sum = sum_cols[j]
+            total = 0
+            for i in range(rows):
+                mult = model.NewIntVar(0, rows, f"temp-mult-{i}")
+                model.AddMultiplicationEquality(mult, [board_maxima[i], board_bools[i][j]])
+                total += mult
+            model.Add(total == cur_sum)
 
     def solve(
         self, template: List[List[str]], sums: List[str], rows: int, cols: int
