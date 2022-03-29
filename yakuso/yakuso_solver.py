@@ -37,8 +37,9 @@ class YakusoSolver:
         ]
 
     def __create_board_sums(self, model, rows, cols):
+        max_sum = (rows * (rows + 1) // 2)
         return [
-            model.NewIntVar(0, rows * rows, f"sum_col=({j})") for j in range(cols)
+            model.NewIntVar(0, max_sum, f"sum_col=({j})") for j in range(cols)
         ]
 
     def __add_sum_constraints(self, model, sums, sum_cols, cols):
