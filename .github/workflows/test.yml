@@ -1,8 +1,5 @@
 name: test
-on:
-  push:
-    paths:
-    - './**'
+on: push
 jobs:
   runtests:
     runs-on: ${{ matrix.os }}
