@@ -28,8 +28,14 @@ class YakusoSolver:
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
         if status == cp_model.FEASIBLE or status == cp_model.OPTIMAL:
-            for i in range(rows):
-                for j in range(cols):
-                    print(f"[{solver.Value(board[i][j])}] ", end="")
-                print("\n")
-        return None
+            return self.to_board(board, solver, rows, cols)
+        return []
+
+    def to_board(self, variables, solver, rows, cols):
+        board = []
+        for i in range(rows):
+            r = []
+            board.append(r)
+            for j in range(cols):
+                r.append(solver.Value(variables[i][j]))
+        return board
