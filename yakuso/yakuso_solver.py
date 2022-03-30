@@ -30,7 +30,7 @@ class YakusoSolver:
             for _i in range(rows)
         ]
 
-    def __create_board_maxima(self, model, rows, cols):
+    def __create_board_maxima(self, model, rows):
         return [
             model.NewIntVar(1, rows, f"row_({_i})")
             for _i in range(rows)
