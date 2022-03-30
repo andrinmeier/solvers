@@ -85,7 +85,7 @@ class YakusoSolver:
     ) -> List[List[int]]:
         model = cp_model.CpModel()
         board_bools = self.__create_board_bools(model, rows, cols)
-        board_maxima = self.__create_board_maxima(model, rows, cols)
+        board_maxima = self.__create_board_maxima(model, rows)
         sum_cols = self.__create_board_sums(model, rows, cols)
         self.__add_sum_constraints(model, sums, sum_cols, cols)
         self.__initialize_board_values(model, template, rows, cols, board_bools, board_maxima)
