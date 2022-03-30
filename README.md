@@ -9,3 +9,4 @@ An assortment of constraint solvers for a variety of puzzles (such as Sudoku or 
 Implemented solvers:
 
 * [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
+* [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
