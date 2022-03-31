@@ -11,7 +11,9 @@ dependencies = [
     "black>=22.3.0",
     "flake8>=4.0.1",
     "pytest>=7.1.1",
-    "hypothesis>=6.40.0"]
+    "hypothesis>=6.40.0",
+    "coverage>=6.3.2",
+]
 requires-python = ">=3.7"
 
 [project.urls]
@@ -28,3 +30,5 @@ start = "python main.py"
 lint = "flake8 ."
 format = "black ."
 test = "pytest"
+testci = "coverage run -m pytest -v tests"
+testreport = "coverage xml"
