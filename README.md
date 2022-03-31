@@ -11,3 +11,4 @@ Implemented solvers:
 
 * [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
 * [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
+* [Doplo](https://www.janko.at/Raetsel/Doppelblock/index.htm)
