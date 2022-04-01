@@ -1,12 +1,13 @@
 from typing import List, Tuple
 from ortools.sat.python import cp_model
 
+
 class SolutionAggregator(cp_model.CpSolverSolutionCallback):
     def __init__(self, solved_board):
         cp_model.CpSolverSolutionCallback.__init__(self)
         self.solved_board = solved_board
         self.solutions = []
-        
+
     def on_solution_callback(self):
         board = []
         self.solutions.append(board)
@@ -17,18 +18,21 @@ class SolutionAggregator(cp_model.CpSolverSolutionCallback):
                 values.append(self.Value(self.solved_board[row][col]))
         return board
 
+
 class SuguruSolver:
     def __get_8er_neighbours(self, i, j, length):
-        is_valid_neighbour = lambda row, col: row >= 0 and row < length and col >= 0 and col < length
+        is_valid_neighbour = (
+            lambda row, col: row >= 0 and row < length and col >= 0 and col < length
+        )
         neighbours = [
-            (i-1, j-1),
-            (i-1, j),
-            (i-1, j+1),
-            (i, j-1),
-            (i, j+1),
-            (i+1, j-1),
-            (i+1, j),
-            (i+1, j+1)
+            (i - 1, j - 1),
+            (i - 1, j),
+            (i - 1, j + 1),
+            (i, j - 1),
+            (i, j + 1),
+            (i + 1, j - 1),
+            (i + 1, j),
+            (i + 1, j + 1),
         ]
         return [n for n in neighbours if is_valid_neighbour(n[0], n[1])]
 

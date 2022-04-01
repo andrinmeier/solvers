@@ -1,5 +1,5 @@
 from enum import unique
-from suguru.suguru_solver import SuguruSolver
+from solvers.suguru.suguru_solver import SuguruSolver
 
 
 def get_template():
@@ -14,12 +14,14 @@ def get_template():
         [(5, ""), (5, "5"), (6, ""), (6, ""), (6, ""), (6, "5"), (7, ""), (7, "")],
     ]
 
+
 def test_finds_all_solutions():
     solver = SuguruSolver()
     length = 8
     template = get_template()
     solved = solver.solve(template, length)
     assert len(solved) == 1
+
 
 def test_preinitializes_board_correctly():
     solver = SuguruSolver()
@@ -31,6 +33,7 @@ def test_preinitializes_board_correctly():
             if len(template[i][j][1]) > 0:
                 assert solved[i][j] == int(template[i][j][1])
 
+
 def test_range_inside_region_is_correct():
     solver = SuguruSolver()
     length = 8
@@ -41,8 +44,9 @@ def test_range_inside_region_is_correct():
         for j in range(length):
             region_index, value = template[i][j]
             region_size = len([cell for cell in cells if cell[0] == region_index])
-            allowed_range = [i+1 for i in range(region_size)]
+            allowed_range = [i + 1 for i in range(region_size)]
             assert solved[i][j] in allowed_range
+
 
 def test_numbers_inside_region_are_unique():
     solver = SuguruSolver()

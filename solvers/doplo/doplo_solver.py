@@ -1,6 +1,7 @@
 from typing import List
 from ortools.sat.python import cp_model
 
+
 class SolutionAggregator(cp_model.CpSolverSolutionCallback):
     def __init__(self, solved_board, black_cells, rows_inbetween, cols_inbetween):
         cp_model.CpSolverSolutionCallback.__init__(self)
@@ -9,7 +10,7 @@ class SolutionAggregator(cp_model.CpSolverSolutionCallback):
         self.rows_inbetween = rows_inbetween
         self.cols_inbetween = cols_inbetween
         self.solutions = []
-        
+
     def on_solution_callback(self):
         board = []
         n = len(self.solved_board)
@@ -23,6 +24,7 @@ class SolutionAggregator(cp_model.CpSolverSolutionCallback):
                     value = None
                 r.append(value)
         self.solutions.append(board)
+
 
 class DoploSolver:
     def solve(
@@ -117,14 +119,20 @@ class DoploSolver:
                     should_enforce = model.NewBoolVar(f"apply-{row}{col}")
                     # Only enforce the constraint if it's not a black cell.
                     model.Add(black_cells[row][col] == 0).OnlyEnforceIf(should_enforce)
-                    model.Add(black_cells[row][col] != 0).OnlyEnforceIf(should_enforce.Not())
+                    model.Add(black_cells[row][col] != 0).OnlyEnforceIf(
+                        should_enforce.Not()
+                    )
                     is_inside = model.NewBoolVar("temp")
                     # Simplify the comparison.
                     # If we're in between two black fields, the summed history is not 0.
                     model.Add(sum_bool != 0).OnlyEnforceIf(is_inside)
                     model.Add(sum_bool == 0).OnlyEnforceIf(is_inside.Not())
-                    model.Add(rows_inbetween[row][col] == is_inside).OnlyEnforceIf(should_enforce)
-                    model.Add(rows_inbetween[row][col] == 0).OnlyEnforceIf(should_enforce.Not())
+                    model.Add(rows_inbetween[row][col] == is_inside).OnlyEnforceIf(
+                        should_enforce
+                    )
+                    model.Add(rows_inbetween[row][col] == 0).OnlyEnforceIf(
+                        should_enforce.Not()
+                    )
                 else:
                     model.Add(rows_inbetween[row][col] == 0)
                 history.append(black_cells[row][col])
@@ -136,12 +144,18 @@ class DoploSolver:
                 if len(history) > 0 and row < (length - 1):
                     should_enforce = model.NewBoolVar(f"apply-{row}{col}")
                     model.Add(black_cells[row][col] == 0).OnlyEnforceIf(should_enforce)
-                    model.Add(black_cells[row][col] != 0).OnlyEnforceIf(should_enforce.Not())
+                    model.Add(black_cells[row][col] != 0).OnlyEnforceIf(
+                        should_enforce.Not()
+                    )
                     is_inside = model.NewBoolVar("abc")
                     model.Add(sum_bool != 0).OnlyEnforceIf(is_inside)
                     model.Add(sum_bool == 0).OnlyEnforceIf(is_inside.Not())
-                    model.Add(cols_inbetween[row][col] == is_inside).OnlyEnforceIf(should_enforce)
-                    model.Add(cols_inbetween[row][col] == 0).OnlyEnforceIf(should_enforce.Not())
+                    model.Add(cols_inbetween[row][col] == is_inside).OnlyEnforceIf(
+                        should_enforce
+                    )
+                    model.Add(cols_inbetween[row][col] == 0).OnlyEnforceIf(
+                        should_enforce.Not()
+                    )
                 else:
                     model.Add(cols_inbetween[row][col] == 0)
                 sum_bool += black_cells[row][col]
@@ -151,30 +165,44 @@ class DoploSolver:
             for col in range(length):
                 should_enforce = model.NewBoolVar(f"apply-{row}{col}")
                 model.Add(black_cells[row][col] == 0).OnlyEnforceIf(should_enforce)
-                model.Add(black_cells[row][col] != 0).OnlyEnforceIf(should_enforce.Not())
+                model.Add(black_cells[row][col] != 0).OnlyEnforceIf(
+                    should_enforce.Not()
+                )
                 model.Add(board[row][col] <= (length - 2)).OnlyEnforceIf(should_enforce)
-                model.Add(board[row][col] > (length - 2)).OnlyEnforceIf(should_enforce.Not())
+                model.Add(board[row][col] > (length - 2)).OnlyEnforceIf(
+                    should_enforce.Not()
+                )
 
         # Ensure row sum is correct
         for row in range(length):
             total = 0
-            for col in range(length):                
-                multres = model.NewIntVar(0, (length*(length+1))//2, f"multres-rows-{row}-{col}")
-                model.AddMultiplicationEquality(multres, [board[row][col], rows_inbetween[row][col]])
+            for col in range(length):
+                multres = model.NewIntVar(
+                    0, (length * (length + 1)) // 2, f"multres-rows-{row}-{col}"
+                )
+                model.AddMultiplicationEquality(
+                    multres, [board[row][col], rows_inbetween[row][col]]
+                )
                 total += multres
             model.Add(sum_rows[row] == total)
 
         # Ensure column sum is correct
         for col in range(length):
             total = 0
-            for row in range(length):                
-                multres = model.NewIntVar(0, (length*(length+1))//2, f"multres-rows-{row}-{col}")
-                model.AddMultiplicationEquality(multres, [board[row][col], cols_inbetween[row][col]])
+            for row in range(length):
+                multres = model.NewIntVar(
+                    0, (length * (length + 1)) // 2, f"multres-rows-{row}-{col}"
+                )
+                model.AddMultiplicationEquality(
+                    multres, [board[row][col], cols_inbetween[row][col]]
+                )
                 total += multres
             model.Add(sum_cols[col] == total)
 
         solver = cp_model.CpSolver()
-        aggregator = SolutionAggregator(board, black_cells, rows_inbetween, cols_inbetween)
+        aggregator = SolutionAggregator(
+            board, black_cells, rows_inbetween, cols_inbetween
+        )
         solver.parameters.enumerate_all_solutions = False
         _ = solver.Solve(model, aggregator)
         return aggregator.solutions

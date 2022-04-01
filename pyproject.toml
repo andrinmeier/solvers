@@ -1,6 +1,6 @@
 [project]
 name = "ortools-puzzle-solvers"
-version = "0.0.1a"
+version = "0.0.1a2"
 description = "Constraint Solvers for common puzzles using OR-Tools."
 authors = [
     {name = "Andrin Meier", email = "andrin@pricemeier.ch"},
@@ -27,9 +27,8 @@ requires = ["pdm-pep517>=0.12.0"]
 build-backend = "pdm.pep517.api"
 
 [tool.pdm.scripts]
-start = "python main.py"
 lint = "flake8 ."
 format = "black ."
-test = "pytest"
+test = "pdm run -v pytest tests"
 testci = "coverage run -m pytest -v tests"
 testreport = "coverage xml"
