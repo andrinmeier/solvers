@@ -22,32 +22,7 @@ class SolutionAggregator(cp_model.CpSolverSolutionCallback):
                 if value > n - 2:
                     value = None
                 r.append(value)
-
-        black_values = []
-        n = len(self.black_cells)
-        for i in range(n):
-            r = []
-            black_values.append(r)
-            for j in range(n):
-                r.append(self.Value(self.black_cells[i][j]))
-
-        rows_inside = []
-        n = len(self.rows_inbetween)
-        for i in range(n):
-            r = []
-            rows_inside.append(r)
-            for j in range(n):
-                r.append(self.Value(self.rows_inbetween[i][j]))
-
-        cols_inside = []
-        n = len(self.cols_inbetween)
-        for i in range(n):
-            r = []
-            cols_inside.append(r)
-            for j in range(n):
-                r.append(self.Value(self.cols_inbetween[i][j]))
-
-        self.solutions.append((board, black_values, rows_inside, cols_inside))
+        self.solutions.append(board)
 
 class DoploSolver:
     def solve(
