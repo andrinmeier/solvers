@@ -22,3 +22,6 @@ jobs:
       - name: Run Tests
         run: |
           pdm run -v pytest tests
+      - name: Publish package
+        run: |
+          pdm publish --password ${{ secrets.PYPI_TOKEN }}
