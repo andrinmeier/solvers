@@ -1,7 +1,7 @@
 <div align="center">
   <h1>Solvers</h1>
   <img src="./solvers_logo.svg" width="200"/>
-  <p>Solvers is a collection of puzzle solvers written in Python using or-tools.</p>
+  <p>Solvers is a collection of puzzle solvers written in python using or-tools.</p>
 </div>
 
 > This project is still in an early alpha phase
@@ -16,7 +16,7 @@
 
 # How to install
 
-This projects is also available on PyPI under the name [ortools-puzzle-solvers](https://pypi.org/project/ortools-puzzle-solvers/).
+This project is also available on PyPI under the name [ortools-puzzle-solvers](https://pypi.org/project/ortools-puzzle-solvers/).
 
 You can install the latest version by issuing the following command:
 
@@ -32,8 +32,7 @@ solver = YakusoSolver()
 solutions = solver.solve(param1, param2, param2, ...)
 ```
 
-The actual parameters for each solver differ.
-There is no API documentation available as of right now. Please check the source code directly to find out how to use each solver.
+The actual parameters for each solver differ. There is no API documentation available as of right now. Please check the source code directly to find out how to use each solver.
 
 # What solvers can I use?
 
