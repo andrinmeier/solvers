@@ -14,10 +14,9 @@
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=andrinmeier_solvers&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=andrinmeier_solvers)
 
-# Solvers
-An assortment of constraint solvers for a variety of puzzles (such as Sudoku or Minesweeper) using OR-Tools and Python.
+# What solvers can I use?
 
-Implemented solvers:
+The following solvers have been implemented and have been tested to work:
 
 * [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
 * [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
