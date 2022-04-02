@@ -14,10 +14,32 @@
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=andrinmeier_solvers&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=andrinmeier_solvers)
 
+# How to install
+
+This projects is also available on PyPI under the name [ortools-puzzle-solvers](https://pypi.org/project/ortools-puzzle-solvers/).
+
+You can install the latest version by issuing the following command:
+
+`pip install ortools-puzzle-solvers`
+
+# How to use
+
+Here's an example on how you can actually use the solvers:
+
+```
+from solvers.yakuso.yakuso_solver import YakusoSolver
+solver = YakusoSolver()
+solutions = solver.solve(param1, param2, param2, ...)
+```
+
+The actual parameters for each solver differ.
+There is no API documentation available as of right now. Please check the source code directly to find out how to use each solver.
+
 # What solvers can I use?
 
-The following solvers have been implemented and have been tested to work:
+The following solvers have been tested and shown to work:
 
 * [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
 * [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
 * [Doplo](https://www.janko.at/Raetsel/Doppelblock/index.htm)
+
