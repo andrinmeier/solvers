@@ -41,4 +41,5 @@ The following solvers have been tested and shown to work:
 * [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
 * [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
 * [Doplo](https://www.janko.at/Raetsel/Doppelblock/index.htm)
+* [Zehnergitter](https://www.janko.at/Raetsel/Zehnergitter/index.htm)
 
