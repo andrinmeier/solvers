@@ -1,3 +1,12 @@
+<div align="center">
+  <h1>Solvers</h1>
+  <img src="./solvers_logo.svg" width="200"/>
+  <p>Solvers is a collection of puzzle solvers written in Python using or-tools.</p>
+</div>
+
+> This project is still in an early alpha phase
+> and you should expect breaking changes before the first stable release.
+
 ![Code Quality](https://github.com/andrinmeier/solvers/actions/workflows/sonar.yml/badge.svg)
 ![Environment Tests](https://github.com/andrinmeier/solvers/actions/workflows/test_environments.yml/badge.svg)
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
