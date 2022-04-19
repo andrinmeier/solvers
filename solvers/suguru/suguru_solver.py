@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import Any, List, Tuple
 from ortools.sat.python import cp_model
 
 
@@ -47,7 +47,7 @@ class SuguruSolver:
         # from eachother and in a certain range (1-size of region)
         cells = [cell for row in template for cell in row]
         num_regions = max([cell[0] for cell in cells]) + 1
-        region_variables = [[] for i in range(num_regions)]
+        region_variables: List[List[Any]] = [[] for i in range(num_regions)]
 
         for row in range(len(template)):
             for col in range(len(template[row])):

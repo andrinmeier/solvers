@@ -1,10 +1,9 @@
-from typing import List
 from ortools.sat.python import cp_model
 from solvers.killer_sudoku.grid import Grid
 
 
 class KillerSudokuSolver:
-    def solve(self, grid_template: Grid) -> List[List[int]]:
+    def solve(self, grid_template: Grid) -> Grid:
         model = cp_model.CpModel()
         grid_length = grid_template.length
         solver_board = [
@@ -30,13 +29,13 @@ class KillerSudokuSolver:
                 constrained_cells.append(solver_board[cell.row][cell.column])
             model.AddAllDifferent(constrained_cells)
 
-        for region in grid_template.get_sum_regions():
+        for sum_region in grid_template.get_sum_regions():
             constrained_cells = []
-            for cell in region.cells:
+            for cell in sum_region.cells:
                 constrained_cells.append(solver_board[cell.row][cell.column])
             model.AddAllDifferent(constrained_cells)
             summed_cells = sum(constrained_cells)
-            model.Add(region.get_sum() == summed_cells)
+            model.Add(sum_region.get_sum() == summed_cells)
 
         solver = cp_model.CpSolver()
         status = solver.Solve(model)

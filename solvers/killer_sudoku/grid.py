@@ -7,10 +7,10 @@ from solvers.killer_sudoku.sum_region import SumRegion
 class Grid:
     def __init__(self, length: int) -> None:
         self.length = length
-        self.rows = []
-        self.columns = []
-        self.regions = []
-        self.sum_regions = []
+        self.rows: List[List[Cell]] = []
+        self.columns: List[List[Cell]] = []
+        self.regions: List[Region] = []
+        self.sum_regions: List[SumRegion] = []
         self.__init_with_empty_cells()
 
     def __init_with_empty_cells(self):

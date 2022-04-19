@@ -1,4 +1,4 @@
-from typing import List
+from typing import Any, List
 from ortools.sat.python import cp_model
 
 
@@ -112,7 +112,7 @@ class DoploSolver:
 
         # Set the cells to true that are in between black fields
         for row in range(length):
-            history = []
+            history: List[Any] = []
             for col in range(length):
                 if len(history) > 0 and col < (length - 1):
                     sum_bool = sum(history)

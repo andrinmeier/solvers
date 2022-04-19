@@ -1,3 +1,6 @@
+from typing import Optional
+
+
 class Cell:
     def __init__(self, row: int, column: int, value: int = None) -> None:
         self.row = row
@@ -7,5 +10,5 @@ class Cell:
     def set_value(self, new_value: int) -> None:
         self.value = new_value
 
-    def get_value(self) -> int:
+    def get_value(self) -> Optional[int]:
         return self.value

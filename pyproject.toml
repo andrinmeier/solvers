@@ -24,6 +24,7 @@ dev = [
     "hypothesis>=6.43.3",
     "coverage>=6.3.2",
     "twine>=4.0.0",
+    "mypy>=0.942",
 ]
 
 [build-system]
@@ -33,6 +34,7 @@ build-backend = "pdm.pep517.api"
 [tool.pdm.scripts]
 lint = "flake8 ."
 format = "black ."
+typecheck = "mypy solvers tests"
 test = "pdm run -v pytest tests"
 testci = "coverage run -m pytest -v tests"
 testreport = "coverage xml"
