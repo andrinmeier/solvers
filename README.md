@@ -38,8 +38,10 @@ The actual parameters for each solver differ. There is no API documentation avai
 
 The following solvers have been tested and shown to work:
 
-* [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
-* [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
 * [Doplo](https://www.janko.at/Raetsel/Doppelblock/index.htm)
+* [Killer Sudoku](https://www.janko.at/Raetsel/Sudoku/Killer/index.htm)
+* [Sudoku](https://www.janko.at/Raetsel/Sudoku/index.htm)
+* [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)
+* [Yakuso](https://www.janko.at/Raetsel/Yakuso/index.htm)
 * [Zehnergitter](https://www.janko.at/Raetsel/Zehnergitter/index.htm)
 
