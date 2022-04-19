@@ -17,7 +17,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
-          pdm sync -G publish
+          pdm sync
       - name: Publish package
         run: |
           pdm plugin add pdm-publish
