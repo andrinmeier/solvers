@@ -1,5 +1,5 @@
 from solvers.killer_sudoku.killer_sudoku_solver import KillerSudokuSolver
-from solvers.killer_sudoku.grid import Grid
+from solvers.common.grid import Grid
 
 
 def get_template():

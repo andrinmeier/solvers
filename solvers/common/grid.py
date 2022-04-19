@@ -1,7 +1,9 @@
 from typing import List
-from solvers.killer_sudoku.cell import Cell
-from solvers.killer_sudoku.region import Region
-from solvers.killer_sudoku.sum_region import SumRegion
+from solvers.common.cell import Cell
+from solvers.common.expr import Expression
+from solvers.common.less_than_op import LessThanOp
+from solvers.common.region import Region
+from solvers.common.sum_region import SumRegion
 
 
 class Grid:
@@ -11,6 +13,7 @@ class Grid:
         self.columns: List[List[Cell]] = []
         self.regions: List[Region] = []
         self.sum_regions: List[SumRegion] = []
+        self.expressions: List[Expression] = []
         self.__init_with_empty_cells()
 
     def __init_with_empty_cells(self):
@@ -28,6 +31,9 @@ class Grid:
 
     def get_cell(self, row: int, column: int) -> Cell:
         return self.rows[row][column]
+
+    def set_cell_value(self, row: int, column: int, value: int) -> None:
+        self.get_cell(row, column).set_value(value)
 
     def get_rows(self) -> List[List[Cell]]:
         return self.rows
@@ -47,3 +53,9 @@ class Grid:
         region = SumRegion(sum)
         self.sum_regions.append(region)
         return region
+
+    def add_less_than_expr(self, left: Cell, right: Cell) -> None:
+        self.expressions.append(Expression(left, right, LessThanOp()))
+
+    def get_expressions(self) -> List[Expression]:
+        return self.expressions

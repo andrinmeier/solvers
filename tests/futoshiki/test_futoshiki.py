@@ -1,5 +1,5 @@
 from solvers.futoshiki.futoshiki_solver import FutoshikiSolver
-from solvers.futoshiki.grid import Grid
+from solvers.common.grid import Grid
 
 
 def get_template():

@@ -1,5 +1,5 @@
-from solvers.futoshiki.cell import Cell
-from solvers.futoshiki.less_than_op import LessThanOp
+from solvers.common.cell import Cell
+from solvers.common.less_than_op import LessThanOp
 
 
 class Expression:

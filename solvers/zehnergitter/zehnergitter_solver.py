@@ -1,6 +1,6 @@
 from typing import List
 from ortools.sat.python import cp_model
-from solvers.neighbourhood import get_eight_neighbourhood
+from solvers.common.neighbourhood import get_eight_neighbourhood
 
 
 class SolutionAggregator(cp_model.CpSolverSolutionCallback):

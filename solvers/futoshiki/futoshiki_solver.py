@@ -1,5 +1,5 @@
 from ortools.sat.python import cp_model
-from solvers.futoshiki.grid import Grid
+from solvers.common.grid import Grid
 
 
 class FutoshikiSolver:

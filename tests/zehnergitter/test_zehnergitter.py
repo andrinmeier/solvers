@@ -1,5 +1,5 @@
 from solvers.zehnergitter.zehnergitter_solver import ZehnergitterSolver
-from solvers.neighbourhood import get_eight_neighbourhood
+from solvers.common.neighbourhood import get_eight_neighbourhood
 
 
 def get_sums():

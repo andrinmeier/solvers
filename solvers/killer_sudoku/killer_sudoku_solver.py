@@ -1,5 +1,5 @@
 from ortools.sat.python import cp_model
-from solvers.killer_sudoku.grid import Grid
+from solvers.common.grid import Grid
 
 
 class KillerSudokuSolver:

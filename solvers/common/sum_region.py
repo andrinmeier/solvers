@@ -1,5 +1,5 @@
 from typing import List
-from solvers.killer_sudoku.cell import Cell
+from solvers.common.cell import Cell
 
 
 class SumRegion:
