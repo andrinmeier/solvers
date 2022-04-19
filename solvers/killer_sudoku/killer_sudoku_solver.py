@@ -1,5 +1,7 @@
 from ortools.sat.python import cp_model
 from solvers.common.grid import Grid
+from solvers.constraints.column_all_different import ColumnAllDifferent
+from solvers.constraints.row_all_different import RowAllDifferent
 
 
 class KillerSudokuSolver:
@@ -14,14 +16,8 @@ class KillerSudokuSolver:
             for row in range(grid_length)
         ]
 
-        for row_index in range(grid_length):
-            model.AddAllDifferent(solver_board[row_index])
-
-        for col_index in range(grid_length):
-            rows = []
-            for row_index in range(grid_length):
-                rows.append(solver_board[row_index][col_index])
-            model.AddAllDifferent(rows)
+        RowAllDifferent().apply(model, solver_board)
+        ColumnAllDifferent().apply(model, solver_board)
 
         for region in grid_template.get_regions():
             constrained_cells = []
