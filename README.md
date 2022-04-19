@@ -32,7 +32,8 @@ solver = YakusoSolver()
 solutions = solver.solve(param1, param2, param2, ...)
 ```
 
-The actual parameters for each solver differ. There is no API documentation available as of right now. Please check the source code directly to find out how to use each solver.
+The actual parameters for each solver differ.
+Take a look at the [written pytests](https://github.com/andrinmeier/solvers/tree/main/tests) for examples on how to use the solvers.
 
 # What solvers can I use?
 
