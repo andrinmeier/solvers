@@ -41,6 +41,7 @@ Take a look at the [written pytests](https://github.com/andrinmeier/solvers/tree
 The following solvers have been tested and shown to work:
 
 * [Doplo](https://www.janko.at/Raetsel/Doppelblock/index.htm)
+* [Futoshiki](https://www.janko.at/Raetsel/Futoshiki/index.htm)
 * [Killer Sudoku](https://www.janko.at/Raetsel/Sudoku/Killer/index.htm)
 * [Sudoku](https://www.janko.at/Raetsel/Sudoku/index.htm)
 * [Suguru](https://www.janko.at/Raetsel/Suguru/index.htm)

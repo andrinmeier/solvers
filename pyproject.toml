@@ -1,6 +1,6 @@
 [project]
 name = "ortools-puzzle-solvers"
-version = "0.0.5"
+version = "0.0.6"
 description = "Constraint Solvers for common puzzles using OR-Tools."
 authors = [
     {name = "Andrin Meier", email = "andrin@pricemeier.ch"},
