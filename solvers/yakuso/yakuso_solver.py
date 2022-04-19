@@ -1,6 +1,5 @@
 from typing import List
 from ortools.sat.python import cp_model
-from itertools import product
 
 
 class SolutionAggregator(cp_model.CpSolverSolutionCallback):

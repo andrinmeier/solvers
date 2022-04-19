@@ -1,6 +1,7 @@
-from typing import List, Tuple
+from typing import List
 from ortools.sat.python import cp_model
 from solvers.neighbourhood import get_eight_neighbourhood
+
 
 class SolutionAggregator(cp_model.CpSolverSolutionCallback):
     def __init__(self, solved_board, width, height):
@@ -19,17 +20,19 @@ class SolutionAggregator(cp_model.CpSolverSolutionCallback):
             for col in range(self.width):
                 values.append(self.Value(self.solved_board[row][col]))
 
+
 class ZehnergitterSolver:
-    def solve(
-        self, sums: List[int]
-    ) -> List[List[int]]:
+    def solve(self, sums: List[int]) -> List[List[int]]:
         model = cp_model.CpModel()
         solver = cp_model.CpSolver()
         width = 10
         height = 5
 
         # Allowed numbers are 0-9
-        board = [[model.NewIntVar(0, 9, f"Cell({row},{col})") for col in range(width)] for row in range(height)]
+        board = [
+            [model.NewIntVar(0, 9, f"Cell({row},{col})") for col in range(width)]
+            for row in range(height)
+        ]
 
         # All numbers in a row must be different to eachother.
         for row in range(height):

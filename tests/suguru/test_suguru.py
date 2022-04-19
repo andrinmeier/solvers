@@ -1,4 +1,3 @@
-from enum import unique
 from solvers.suguru.suguru_solver import SuguruSolver
 
 

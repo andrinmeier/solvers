@@ -1,6 +1,7 @@
 from typing import List
 from ortools.sat.python import cp_model
 
+
 class SudokuSolver:
     def to_solved_board(self, solver, solved_board, board_size):
         board = []
@@ -19,16 +20,16 @@ class SudokuSolver:
         else:
             return "UNKNOWN"
 
-    def solve(
-        self,
-        template: List[List[str]]
-    ) -> List[List[int]]:
+    def solve(self, template: List[List[str]]) -> List[List[int]]:
         model = cp_model.CpModel()
         solver = cp_model.CpSolver()
-        
+
         board_width = 9
         subboard_width = 3
-        board = [[model.NewIntVar(1, 9, f"Cell({row},{col})") for col in range(board_width)] for row in range(board_width)]
+        board = [
+            [model.NewIntVar(1, 9, f"Cell({row},{col})") for col in range(board_width)]
+            for row in range(board_width)
+        ]
 
         for row in range(board_width):
             for col in range(board_width):
@@ -50,11 +51,17 @@ class SudokuSolver:
                 subboard = []
                 for row in range(subboard_width):
                     for col in range(subboard_width):
-                        subboard.append(board[row + subboard_row * subboard_width][col + subboard_col * subboard_width])
+                        subboard.append(
+                            board[row + subboard_row * subboard_width][
+                                col + subboard_col * subboard_width
+                            ]
+                        )
                 model.AddAllDifferent(subboard)
 
         status = solver.Solve(model)
         if status == cp_model.FEASIBLE or status == cp_model.OPTIMAL:
             return self.to_solved_board(solver, board, board_width)
         else:
-            raise Exception(f"Sudoku could not be solved. Status = {self.status_to_message(status)}")
+            raise Exception(
+                f"Sudoku could not be solved. Status = {self.status_to_message(status)}"
+            )
