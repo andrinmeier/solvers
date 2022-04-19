@@ -2,6 +2,8 @@ from ortools.sat.python import cp_model
 from solvers.common.grid import Grid
 from solvers.constraints.column_all_different import ColumnAllDifferent
 from solvers.constraints.row_all_different import RowAllDifferent
+from solvers.constraints.solution_converter import to_solved_grid
+from solvers.constraints.solver_status import status_to_message
 
 
 class KillerSudokuSolver:
@@ -36,26 +38,8 @@ class KillerSudokuSolver:
         solver = cp_model.CpSolver()
         status = solver.Solve(model)
         if status == cp_model.FEASIBLE or status == cp_model.OPTIMAL:
-            return self.__to_solved_grid(solver, solver_board)
+            return to_solved_grid(solver, solver_board)
         else:
             raise Exception(
-                f"Killer Sudoku could not be solved. Status = {self.__status_to_message(status)}"
+                f"Killer Sudoku could not be solved. Status = {status_to_message(status)}"
             )
-
-    def __status_to_message(self, status) -> str:
-        if status == cp_model.INFEASIBLE:
-            return "INFEASIBLE"
-        elif status == cp_model.MODEL_INVALID:
-            return "MODEL_INVALD"
-        else:
-            return "UNKNOWN"
-
-    def __to_solved_grid(self, solver, solved_board) -> Grid:
-        grid_length = len(solved_board)
-        grid = Grid(grid_length)
-        for row_index in range(grid_length):
-            for column_index in range(grid_length):
-                solved_cell_value = solver.Value(solved_board[row_index][column_index])
-                cell = grid.get_cell(row_index, column_index)
-                cell.set_value(solved_cell_value)
-        return grid

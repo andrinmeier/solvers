@@ -1,10 +1,11 @@
 from typing import Any, List
+from solvers.common.grid import Grid
 
 from solvers.constraints.puzzle_constraint import PuzzleConstraint
 
 
 class PredefinedValues(PuzzleConstraint):
-    def __init__(self, grid_template: List[List[Any]]) -> None:
+    def __init__(self, grid_template: Grid) -> None:
         self.grid_template = grid_template
 
     def apply(self, model, board: List[List[Any]]) -> None:
