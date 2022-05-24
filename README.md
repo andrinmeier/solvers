@@ -14,6 +14,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 <a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=andrinmeier_solvers&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=andrinmeier_solvers)
+[![Discord](https://img.shields.io/discord/978401806990332014)](https://discord.com/channels/978401806990332014/978548776606240848)
+
 
 # How to install
 
