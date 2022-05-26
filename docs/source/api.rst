@@ -4,4 +4,5 @@ API
 .. autosummary::
    :toctree: generated
 
-   lumache
+   sphinx.environment.BuildEnvironment
+   sphinx.util.relative_uri
