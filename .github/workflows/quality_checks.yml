@@ -1,0 +1,58 @@
+name: quality_checks
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
+  push:
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+      - name: Run linter
+        run: |
+          pdm run lint
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+      - name: Run type checker
+        run: |
+          pdm run typecheck
+  test_and_sonar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up PDM
+        uses: pdm-project/setup-pdm@main
+        with:
+          python-version: 3.7
+      - name: Install dependencies
+        run: |
+          pdm sync -d
+      - name: Run Tests
+        run: |
+          pdm run testci
+          pdm run testreport
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets. SONAR_TOKEN}}

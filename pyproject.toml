@@ -25,6 +25,7 @@ dev = [
     "coverage>=6.3.2",
     "twine>=4.0.0",
     "mypy>=0.942",
+    "flake8-bandit>=3.0.0",
 ]
 
 [build-system]
