@@ -1,17 +1,20 @@
-Welcome to solvers's documentation!
-===================================
+.. ortools-puzzle-solvers documentation master file, created by
+   sphinx-quickstart on Thu May 26 20:17:45 2022.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
-
-.. note::
-
-   This project is under active development.
-
-Contents
---------
+Welcome to ortools-puzzle-solvers's documentation!
+==================================================
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Contents:
 
-   usage
-   api
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
