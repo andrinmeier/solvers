@@ -2,9 +2,9 @@
 
 # -- Project information
 
-project = 'Lumache'
-copyright = '2021, Graziella'
-author = 'Graziella'
+project = 'ortools-puzzle-solvers'
+copyright = '2022, Andrin Meier'
+author = 'Andrin Meier'
 
 release = '0.1'
 version = '0.1.0'
