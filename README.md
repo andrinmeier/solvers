@@ -7,7 +7,7 @@
 > This project is still in an early alpha phase
 > and you should expect breaking changes before the first stable release.
 
-![Code Quality](https://github.com/andrinmeier/solvers/actions/workflows/sonar.yml/badge.svg)
+![Code Quality](https://github.com/andrinmeier/solvers/actions/workflows/quality_checks.yml/badge.svg)
 ![Environment Tests](https://github.com/andrinmeier/solvers/actions/workflows/test_environments.yml/badge.svg)
 [![pdm-managed](https://img.shields.io/badge/pdm-managed-blueviolet)](https://pdm.fming.dev)
 [![mypy](https://img.shields.io/badge/type%20checking-mypy-brightgreen)](http://mypy-lang.org/)
